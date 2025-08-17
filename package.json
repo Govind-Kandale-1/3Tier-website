@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "install-client": "cd frontend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
