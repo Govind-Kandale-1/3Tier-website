@@ -1,0 +1,21 @@
+# .github/workflows/deploy.yml
+name: Deploy MERN App
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Deploy to DigitalOcean
+        run: |
+          # Build and push Docker images
+          docker build -t employee-frontend ./frontend
+          docker build -t employee-backend ./backend
+          
+          # Deploy using Terraform
+          cd terraform
+          terraform apply -auto-approve
